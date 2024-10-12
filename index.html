@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Juego Simple</title>
+</head>
+<body>
+    <script src="https://pygame-web.github.io/archives/0.7/pygame_web.js"></script>
+    <script>
+        function main() {
+            pygame.init();
+            var screen = pygame.display.set_mode([800, 600]);
+            pygame.display.set_caption("Mi Juego Simple");
+            var clock = pygame.time.Clock();
+            
+            async function game_loop() {
+                var running = true;
+                while (running) {
+                    for (var event of await pygame.event.get()) {
+                        if (event.type == pygame.QUIT) {
+                            running = false;
+                        }
+                    }
+                    screen.fill([0, 0, 0]);
+                    pygame.display.flip();
+                    await clock.tick(30);
+                }
+            }
+            
+            game_loop();
+        }
+        main();
+    </script>
+</body>
+</html>
